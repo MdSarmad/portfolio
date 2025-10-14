@@ -4,6 +4,7 @@ import { Download, Mail, Code2, Database } from "lucide-react";
 import { TypingEffect } from "../TypingEffect";
 import { ImageWithFallback } from "../fallback/ImageWithFallback";
 import { typingTexts } from "../../data/portfolio-data";
+import profilePic from "../../../public/profile.jpg";
 
 interface HeroSectionProps {
   onGetResume: () => void;
@@ -29,7 +30,7 @@ export function HeroSection({ onGetResume }: HeroSectionProps) {
           className="mb-8"
         >
           <ImageWithFallback
-            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
+            src={profilePic}
             alt="Profile"
             className="w-32 h-32 rounded-full mx-auto border-4 border-primary/20 shadow-xl"
           />
