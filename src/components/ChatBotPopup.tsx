@@ -1,12 +1,23 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "./ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "./ui/dialog";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { ScrollArea } from "./ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Send, Bot, User, Download, Mail } from "lucide-react";
-import { ChatMessage, welcomeMessage, findBestResponse, getFollowUpSuggestions } from "../data/chatbot-data";
+import {
+  ChatMessage,
+  welcomeMessage,
+  findBestResponse,
+  getFollowUpSuggestions,
+} from "../data/chatbot-data";
 
 interface ChatBotPopupProps {
   open: boolean;
@@ -14,7 +25,11 @@ interface ChatBotPopupProps {
   onGetResume?: () => void;
 }
 
-export function ChatBotPopup({ open, onOpenChange, onGetResume }: ChatBotPopupProps) {
+export function ChatBotPopup({
+  open,
+  onOpenChange,
+  onGetResume,
+}: ChatBotPopupProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -26,13 +41,17 @@ export function ChatBotPopup({ open, onOpenChange, onGetResume }: ChatBotPopupPr
   useEffect(() => {
     if (open && messages.length === 0) {
       const welcomeMsg: ChatMessage = {
-        id: '1',
+        id: "1",
         text: welcomeMessage,
-        sender: 'bot',
-        timestamp: new Date()
+        sender: "bot",
+        timestamp: new Date(),
       };
       setMessages([welcomeMsg]);
-      setFollowUpSuggestions(['Tell me about his skills', 'Show me his projects', 'Is he available for hire?']);
+      setFollowUpSuggestions([
+        "Tell me about his skills",
+        "Show me his projects",
+        "Is he available for hire?",
+      ]);
     }
   }, [open, messages.length]);
 
@@ -58,11 +77,11 @@ export function ChatBotPopup({ open, onOpenChange, onGetResume }: ChatBotPopupPr
     const userMessage: ChatMessage = {
       id: Date.now().toString(),
       text,
-      sender: 'user',
-      timestamp: new Date()
+      sender: "user",
+      timestamp: new Date(),
     };
 
-    setMessages(prev => [...prev, userMessage]);
+    setMessages((prev) => [...prev, userMessage]);
     setInputValue("");
     setIsTyping(true);
 
@@ -70,20 +89,23 @@ export function ChatBotPopup({ open, onOpenChange, onGetResume }: ChatBotPopupPr
     setTimeout(() => {
       const botResponse = findBestResponse(text);
       const suggestions = getFollowUpSuggestions(text);
-      
+
       const botMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         text: botResponse,
-        sender: 'bot',
-        timestamp: new Date()
+        sender: "bot",
+        timestamp: new Date(),
       };
 
-      setMessages(prev => [...prev, botMessage]);
+      setMessages((prev) => [...prev, botMessage]);
       setFollowUpSuggestions(suggestions);
       setIsTyping(false);
 
       // Handle special actions
-      if (text.toLowerCase().includes('resume') || text.toLowerCase().includes('cv')) {
+      if (
+        text.toLowerCase().includes("resume") ||
+        text.toLowerCase().includes("cv")
+      ) {
         setTimeout(() => {
           if (onGetResume) {
             onGetResume();
@@ -98,23 +120,40 @@ export function ChatBotPopup({ open, onOpenChange, onGetResume }: ChatBotPopupPr
   };
 
   const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
     onOpenChange(false);
   };
 
   const formatMessageText = (text: string) => {
     // Convert markdown-like formatting to JSX
-    const parts = text.split('\n').map((line, index) => {
-      if (line.startsWith('🔹') || line.startsWith('✅') || line.startsWith('💰') || line.startsWith('👥')) {
-        return <div key={index} className="ml-2 mb-1">{line}</div>;
+    const parts = text.split("\n").map((line, index) => {
+      if (
+        line.startsWith("🔹") ||
+        line.startsWith("✅") ||
+        line.startsWith("💰") ||
+        line.startsWith("👥")
+      ) {
+        return (
+          <div key={index} className="ml-2 mb-1">
+            {line}
+          </div>
+        );
       }
-      if (line.startsWith('**') && line.endsWith('**')) {
-        return <div key={index} className="font-semibold mb-1">{line.slice(2, -2)}</div>;
+      if (line.startsWith("**") && line.endsWith("**")) {
+        return (
+          <div key={index} className="font-semibold mb-1">
+            {line.slice(2, -2)}
+          </div>
+        );
       }
-      if (line.trim() === '') {
+      if (line.trim() === "") {
         return <br key={index} />;
       }
-      return <div key={index} className="mb-1">{line}</div>;
+      return (
+        <div key={index} className="mb-1">
+          {line}
+        </div>
+      );
     });
     return <div>{parts}</div>;
   };
@@ -131,7 +170,7 @@ export function ChatBotPopup({ open, onOpenChange, onGetResume }: ChatBotPopupPr
               </AvatarFallback>
             </Avatar>
             <div>
-              <div className="text-lg">MD Sarmad's AI Assistant</div>
+              <div className="text-lg">Md Sarmad's AI Assistant</div>
               <div className="text-sm text-muted-foreground font-normal">
                 {isTyping ? (
                   <span className="flex items-center gap-1">
@@ -159,7 +198,8 @@ export function ChatBotPopup({ open, onOpenChange, onGetResume }: ChatBotPopupPr
             </div>
           </DialogTitle>
           <DialogDescription className="sr-only">
-            Chat with MD Sarmad's AI assistant to learn about his skills, experience, and availability
+            Chat with Md Sarmad's AI assistant to learn about his skills,
+            experience, and availability
           </DialogDescription>
         </DialogHeader>
 
@@ -173,10 +213,12 @@ export function ChatBotPopup({ open, onOpenChange, onGetResume }: ChatBotPopupPr
                     initial={{ opacity: 0, y: 20, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className={`flex gap-3 ${message.sender === 'user' ? 'flex-row-reverse' : ''}`}
+                    className={`flex gap-3 ${
+                      message.sender === "user" ? "flex-row-reverse" : ""
+                    }`}
                   >
                     <Avatar className="w-8 h-8 flex-shrink-0">
-                      {message.sender === 'bot' ? (
+                      {message.sender === "bot" ? (
                         <AvatarFallback className="bg-primary text-primary-foreground">
                           <Bot className="w-4 h-4" />
                         </AvatarFallback>
@@ -188,16 +230,21 @@ export function ChatBotPopup({ open, onOpenChange, onGetResume }: ChatBotPopupPr
                     </Avatar>
                     <div
                       className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-                        message.sender === 'user'
-                          ? 'bg-primary text-primary-foreground'
-                          : 'bg-muted text-foreground'
+                        message.sender === "user"
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-muted text-foreground"
                       }`}
                     >
                       <div className="text-sm">
-                        {message.sender === 'bot' ? formatMessageText(message.text) : message.text}
+                        {message.sender === "bot"
+                          ? formatMessageText(message.text)
+                          : message.text}
                       </div>
                       <div className="text-xs opacity-70 mt-2">
-                        {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                        {message.timestamp.toLocaleTimeString([], {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
                       </div>
                     </div>
                   </motion.div>
@@ -257,7 +304,7 @@ export function ChatBotPopup({ open, onOpenChange, onGetResume }: ChatBotPopupPr
                   </div>
                 </motion.div>
               )}
-              
+
               <div ref={messagesEndRef} />
             </div>
           </ScrollArea>
@@ -274,7 +321,7 @@ export function ChatBotPopup({ open, onOpenChange, onGetResume }: ChatBotPopupPr
                 ref={inputRef}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                placeholder="Ask me anything about MD Sarmad..."
+                placeholder="Ask me anything about Md Sarmad..."
                 disabled={isTyping}
                 className="flex-1"
               />

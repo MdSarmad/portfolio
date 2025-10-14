@@ -18,8 +18,8 @@ export function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map(item => item.href.substring(1));
-      const currentSection = sections.find(section => {
+      const sections = navItems.map((item) => item.href.substring(1));
+      const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -32,14 +32,14 @@ export function Navigation() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (href: string) => {
     const element = document.getElementById(href.substring(1));
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
     setIsOpen(false);
   };
@@ -51,15 +51,19 @@ export function Navigation() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
-              <h1 className="text-xl font-medium">MD Sarmad</h1>
+              <h1 className="text-xl font-medium">Md Sarmad</h1>
             </div>
-            
+
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 {navItems.map((item) => (
                   <Button
                     key={item.href}
-                    variant={activeSection === item.href.substring(1) ? "default" : "ghost"}
+                    variant={
+                      activeSection === item.href.substring(1)
+                        ? "default"
+                        : "ghost"
+                    }
                     onClick={() => scrollToSection(item.href)}
                     className="text-sm"
                   >
@@ -75,7 +79,11 @@ export function Navigation() {
                 size="sm"
                 onClick={() => setIsOpen(!isOpen)}
               >
-                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {isOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
               </Button>
             </div>
           </div>
@@ -88,7 +96,11 @@ export function Navigation() {
               {navItems.map((item) => (
                 <Button
                   key={item.href}
-                  variant={activeSection === item.href.substring(1) ? "default" : "ghost"}
+                  variant={
+                    activeSection === item.href.substring(1)
+                      ? "default"
+                      : "ghost"
+                  }
                   onClick={() => scrollToSection(item.href)}
                   className="w-full justify-start"
                 >

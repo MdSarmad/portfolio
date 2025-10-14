@@ -1,5 +1,4 @@
-
-# MD Sarmad - Portfolio Website
+# Md Sarmad - Portfolio Website
 
 A beautiful, modern, and responsive single-page portfolio website built with **React**, **TypeScript**, and **Tailwind CSS**. Showcases projects, skills, experience, and more.
 
@@ -55,6 +54,7 @@ portfolio/
 ## ⚡ Getting Started
 
 ### Prerequisites
+
 - [Node.js](https://nodejs.org/) >= 18.x
 - [npm](https://www.npmjs.com/) >= 8.x
 
@@ -69,6 +69,7 @@ npm install
 ```bash
 npm run dev
 ```
+
 Visit [http://localhost:3000](http://localhost:3000) to view the app.
 
 ### Production Build
@@ -87,6 +88,7 @@ npm run type-check # TypeScript type check
 ---
 
 ## 📝 Customization
+
 - Update your information and content in `src/data/portfolio-data.tsx`.
 - Modify sections in `src/components/sections/` as needed.
 - Add or update images in the `public/` folder.
@@ -111,5 +113,5 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 🙋‍♂️ Author
 
-**MD Sarmad**  
+**Md Sarmad**  
 [mdsarmad.com](https://mdsarmad.com)

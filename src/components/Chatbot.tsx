@@ -27,7 +27,7 @@ export function ChatBot({ onClick, isOpen }: ChatBotProps) {
             exit={{ opacity: 0, x: 20, scale: 0.8 }}
             className="absolute right-16 bottom-2 bg-primary text-primary-foreground px-3 py-2 rounded-lg text-sm whitespace-nowrap shadow-lg"
           >
-            Hi! Ask me about MD Sarmad
+            Hi! Ask me about Md Sarmad
             <div className="absolute right-0 top-1/2 transform translate-x-2 -translate-y-1/2">
               <div className="w-0 h-0 border-l-4 border-l-primary border-t-4 border-t-transparent border-b-4 border-b-transparent"></div>
             </div>
