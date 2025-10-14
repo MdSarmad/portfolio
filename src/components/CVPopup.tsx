@@ -23,7 +23,7 @@
 //     }
 
 //     setIsSubmitting(true);
-    
+
 //     // Simulate API call
 //     setTimeout(() => {
 //       toast.success("CV sent to your email! Check your inbox.");
@@ -82,11 +82,17 @@
 // }
 
 import { useState } from "react";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "./ui/dialog";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import { Download, Send, X } from "lucide-react";
+import { Download, Send } from "lucide-react";
 import { toast } from "sonner";
 
 interface CVPopupProps {
@@ -116,9 +122,9 @@ export function CVPopup({ open, onOpenChange }: CVPopupProps) {
 
   const handleDownloadCV = () => {
     // Create a dummy PDF download
-    const link = document.createElement('a');
-    link.href = '#';
-    link.download = 'MD_Sarmad_Resume.pdf';
+    const link = document.createElement("a");
+    link.href = "#";
+    link.download = "MD_Sarmad_Resume.pdf";
     link.click();
     toast.success("CV download started!");
     onOpenChange(false);
@@ -136,7 +142,7 @@ export function CVPopup({ open, onOpenChange }: CVPopupProps) {
             Choose how you'd like to receive my resume and portfolio details.
           </DialogDescription>
         </DialogHeader>
-        
+
         <div className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="email">Email Address</Label>
@@ -150,7 +156,7 @@ export function CVPopup({ open, onOpenChange }: CVPopupProps) {
           </div>
 
           <div className="flex flex-col gap-3">
-            <Button 
+            <Button
               onClick={handleSendCV}
               disabled={loading}
               className="w-full"
@@ -168,7 +174,7 @@ export function CVPopup({ open, onOpenChange }: CVPopupProps) {
               )}
             </Button>
 
-            <Button 
+            <Button
               variant="outline"
               onClick={handleDownloadCV}
               className="w-full"
@@ -179,7 +185,8 @@ export function CVPopup({ open, onOpenChange }: CVPopupProps) {
           </div>
 
           <p className="text-sm text-muted-foreground text-center">
-            Your email will only be used to send the resume and won't be stored or shared.
+            Your email will only be used to send the resume and won't be stored
+            or shared.
           </p>
         </div>
       </DialogContent>

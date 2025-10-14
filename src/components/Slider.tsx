@@ -11,13 +11,13 @@ interface SliderProps {
   autoScrollInterval?: number;
 }
 
-export function Slider({ 
-  children, 
-  className = "", 
+export function Slider({
+  children,
+  className = "",
   itemClassName = "",
   showNavigation = true,
   autoScroll = false,
-  autoScrollInterval = 5000
+  autoScrollInterval = 5000,
 }: SliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -41,7 +41,7 @@ export function Slider({
         const itemWidth = firstChild.offsetWidth + 24; // Include gap
         slider.scrollTo({
           left: index * itemWidth,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
         setCurrentIndex(index);
       }
@@ -56,7 +56,7 @@ export function Slider({
         const itemWidth = firstChild.offsetWidth + 24; // Include gap
         slider.scrollBy({
           left: -itemWidth,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
       }
     }
@@ -70,7 +70,7 @@ export function Slider({
         const itemWidth = firstChild.offsetWidth + 24; // Include gap
         slider.scrollBy({
           left: itemWidth,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
       }
     }
@@ -80,11 +80,11 @@ export function Slider({
     const slider = sliderRef.current;
     if (slider) {
       updateScrollButtons();
-      slider.addEventListener('scroll', updateScrollButtons);
-      window.addEventListener('resize', updateScrollButtons);
+      slider.addEventListener("scroll", updateScrollButtons);
+      window.addEventListener("resize", updateScrollButtons);
       return () => {
-        slider.removeEventListener('scroll', updateScrollButtons);
-        window.removeEventListener('resize', updateScrollButtons);
+        slider.removeEventListener("scroll", updateScrollButtons);
+        window.removeEventListener("resize", updateScrollButtons);
       };
     }
   }, []);
@@ -126,7 +126,7 @@ export function Slider({
   };
 
   return (
-    <div 
+    <div
       className={`relative group ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -138,7 +138,7 @@ export function Slider({
             variant="outline"
             size="sm"
             className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 rounded-full w-10 h-10 p-0 bg-background/80 backdrop-blur-sm transition-opacity ${
-              canScrollLeft ? 'opacity-100' : 'opacity-0 pointer-events-none'
+              canScrollLeft ? "opacity-100" : "opacity-0 pointer-events-none"
             } group-hover:opacity-100`}
             onClick={scrollLeft}
           >
@@ -148,7 +148,7 @@ export function Slider({
             variant="outline"
             size="sm"
             className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 rounded-full w-10 h-10 p-0 bg-background/80 backdrop-blur-sm transition-opacity ${
-              canScrollRight ? 'opacity-100' : 'opacity-0 pointer-events-none'
+              canScrollRight ? "opacity-100" : "opacity-0 pointer-events-none"
             } group-hover:opacity-100`}
             onClick={scrollRight}
           >
@@ -162,9 +162,8 @@ export function Slider({
         ref={sliderRef}
         className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory"
         style={{
-          scrollbarWidth: 'none',
-          msOverflowStyle: 'none',
-          WebkitScrollbar: { display: 'none' }
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
         }}
       >
         {children.map((child, index) => (
@@ -184,7 +183,9 @@ export function Slider({
             <button
               key={index}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === currentIndex ? 'bg-primary w-8' : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                index === currentIndex
+                  ? "bg-primary w-8"
+                  : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
               }`}
               onClick={() => scrollToIndex(index)}
               aria-label={`Go to slide ${index + 1}`}
