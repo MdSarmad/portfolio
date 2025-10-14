@@ -1,11 +1,10 @@
 import { Code2, Server, Database, Palette } from "lucide-react";
 
 export const typingTexts = [
-  "Full Stack Developer",
-  "React Specialist",
-  "UI/UX Designer",
-  "Problem Solver",
-  "Tech Enthusiast",
+  "Software Engineer",
+  // "Full Stack Developer",
+  // "Problem Solver",
+  // "Tech Enthusiast",
 ];
 
 export const skills = {
@@ -96,23 +95,23 @@ export const projects = [
 
 export const experiences = [
   {
-    title: "Senior Full Stack Developer",
-    company: "Tech Innovators Inc.",
-    period: "2022 - Present",
+    title: "Software Engineer",
+    company: "SingleView",
+    period: "Jul 2022 - Present",
     description:
       "Lead development of scalable web applications, mentor junior developers, and architect cloud solutions.",
   },
   {
-    title: "Frontend Developer",
-    company: "Digital Solutions Ltd.",
-    period: "2020 - 2022",
+    title: "Frontend Developer Intern",
+    company: "Our Works Solutions Pvt. Ltd.",
+    period: "Dec 2021 - Mar 2022",
     description:
       "Developed responsive web applications using React and modern CSS frameworks, improved performance by 40%.",
   },
   {
-    title: "Junior Developer",
-    company: "StartUp Ventures",
-    period: "2019 - 2020",
+    title: "Technical Intern",
+    company: "Incredible Visibility",
+    period: "Aug 2021 - Nov 2021",
     description:
       "Built and maintained web applications, collaborated with design team to implement pixel-perfect interfaces.",
   },

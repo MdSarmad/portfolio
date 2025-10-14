@@ -44,9 +44,9 @@ export function HeroSection({ onGetResume }: HeroSectionProps) {
         </div>
 
         <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Passionate full-stack developer with 5+ years of experience creating
-          innovative web solutions. I specialize in React, Node.js, and modern
-          web technologies to bring ideas to life.
+          Passionate software engineer with 3+ years of experience creating
+          innovative web solutions. I specialize in and modern web technologies
+          to bring ideas to life.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
