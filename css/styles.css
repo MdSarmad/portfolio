@@ -4223,6 +4223,63 @@ textarea.form-control-lg {
     overflow-y: visible;
   }
 }
+
+/* Custom Portfolio Enhancements */
+body.theme-light { background: #f3f6fc; }
+body.theme-dark { background: #0a1220; color: #e8ecf8; }
+
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #c6d3e6;
+  border-radius: 100px;
+  background: #ffffff;
+  color: #2f3f56;
+  display: grid;
+  place-items: center;
+  z-index: 999;
+  box-shadow: 0 12px 24px rgba(31, 64, 103, 0.23);
+}
+
+.theme-dark .theme-toggle {
+  background: #162a47;
+  border-color: #2d5da2;
+  color: #f6f9ff;
+}
+
+@media (max-width: 992px) {
+  .theme-toggle {
+    z-index: 1040;
+    width: 50px;
+    height: 50px;
+    top: auto;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  .theme-toggle i {
+    font-size: 1.2rem;
+  }
+}
+
+.resume-section {
+  padding: 2rem 0;
+}
+
+.hero .resume-section-content h1, .hero .resume-section-content h2 { color: var(--bs-primary); }
+
+.contact-form { max-width: 700px; margin-top: 1rem; }
+
+.contact-form .form-control { border-radius: 0.75rem; }
+
+#contactStatus { margin-top: 0.75rem; font-weight: 600; }
+
+#contactStatus.text-success { color: #198754; }
+#contactStatus.text-danger { color: #dc3545; }
+#contactStatus.text-muted { color: #6c757d; }
+
 @media (min-width: 992px) {
   .navbar-expand-lg {
     flex-wrap: nowrap;
